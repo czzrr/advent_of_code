@@ -70,8 +70,6 @@ pub fn b() {
     println!("{}", num_valid_password_policies);
 }
 
-
-// -- Parsing --
 fn parse_password_policy(input: &str) -> IResult<&str, PasswordPolicy> {
     let (input, lower) = digit(input)?;
     let (input, _) = char('-')(input)?;
@@ -98,4 +96,3 @@ fn is_dec_digit(c: char) -> bool {
 fn from_dec(input: &str) -> Result<u8, std::num::ParseIntError> {
     input.parse()
 }
-
