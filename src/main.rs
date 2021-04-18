@@ -5,6 +5,7 @@ mod day1;
 mod day2;
 mod day3;
 mod day4;
+mod day5;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -24,6 +25,7 @@ fn main() {
         "2020 3 a" => day3::a(),
         "2020 3 b" => day3::b(),
         "2020 4 a" => day4::a(),
+        "2020 5 a" => day5::a(),
         _ => println!("Parse error"),
     }
 }
