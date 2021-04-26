@@ -6,6 +6,7 @@ mod day2;
 mod day3;
 mod day4;
 mod day5;
+mod day6;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -20,12 +21,14 @@ fn main() {
     match combined.as_str() {
         "2020 1 a" => day1::a(),
         "2020 1 b" => day1::b(),
-	"2020 2 a" => day2::a(),
+	    "2020 2 a" => day2::a(),
         "2020 2 b" => day2::b(),
         "2020 3 a" => day3::a(),
         "2020 3 b" => day3::b(),
         "2020 4 a" => day4::a(),
         "2020 5 a" => day5::a(),
+        "2020 5 b" => day5::b(),
+        "2020 6 a" => day6::a(),
         _ => println!("Parse error"),
     }
 }

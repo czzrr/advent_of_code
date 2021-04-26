@@ -20,7 +20,7 @@ impl EncodedSeat {
         let row_direction: [u8; 7] = input[0..7].try_into().ok()?;
         let column_direction: [u8; 3] = input[7..10].try_into().ok()?;
     
-        Some(EncodedSeat{row_direction, column_direction})
+        Some(EncodedSeat{ row_direction, column_direction })
     }
 }
 
@@ -70,4 +70,33 @@ pub fn a() {
         .unwrap();
     println!("The highest seat number is {}", highest_seat_number);
 
+}
+
+pub fn b() {
+    let lines: Vec<String> = utils::read_lines("src/day5.txt");
+    
+    let mut seat_ids: Vec<u32> = lines
+        .iter()
+        .map(|line| {
+            let encoded_seat = EncodedSeat::new(line).expect("Error when parsing encoded seat");
+            let seat_position = SeatPosition::new(encoded_seat);
+            let row = seat_position.row as u32;
+            let column = seat_position.column as u32;
+            8 * row + column
+        })
+        .collect();
+    seat_ids.sort();
+
+    let mut my_seat_id = None;
+
+    for (i, seat_id) in seat_ids[1..].iter().enumerate() {
+        if seat_ids[i] + 2 == *seat_id {
+            my_seat_id = Some(seat_id - 1);
+        }
+    }
+
+    match my_seat_id {
+        Some(id) => println!("My seat id is {}", id),
+        None => println!("My seat id was not found :("),
+    };
 }
