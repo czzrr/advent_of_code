@@ -33,20 +33,8 @@ struct FieldValuePair {
 pub fn a() {
     let lines: Vec<String> = utils::read_lines("src/day4.txt");
     
-    let xs: Vec<String> = lines
-        .iter()
-        .fold((Vec::new(), Vec::new()),
-              |mut acc, s|
-              if s.len() != 0 { // If line is not blank
-                  acc.1.push(s.clone());
-                  acc
-              } else {
-                  acc.0.push(acc.1);
-                  acc.1 = Vec::new();
-                  acc
-              })
-        .0
-        .iter()
+    let xs: Vec<_> = lines
+        .split(|line| line == "")
         .map(|v| v.join(" "))
         .collect();
 
@@ -81,8 +69,3 @@ fn parse_passport(input: &str) -> IResult<&str, Passport> {
     let (input, fvps) = many0(parse_tag)(input)?;
         Ok((input, Passport {fvps}))
 }
-
-
-// -- Parsing --
-
-
