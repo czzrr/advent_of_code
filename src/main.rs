@@ -29,6 +29,7 @@ fn main() {
         "2020 5 a" => day5::a(),
         "2020 5 b" => day5::b(),
         "2020 6 a" => day6::a(),
+        "2020 6 b" => day6::b(),
         _ => println!("Parse error"),
     }
 }
